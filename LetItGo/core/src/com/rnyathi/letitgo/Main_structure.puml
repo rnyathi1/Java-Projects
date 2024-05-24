@@ -1,0 +1,757 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "com.rnyathi.letitgo.Main",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1360161713 { 
+   	label=rnyathi
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_347286863 { 
+   	label=letitgo
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   AppPreferences1879371708[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AppPreferences</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+B2WorldCreator736727953[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)B2WorldCreator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   batSpawner: Array&lt;BatSpawner&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   boss: Array&lt;Boss&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   level: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   shooter: Array&lt;Shooter&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   walker: Array&lt;Walker&gt; [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Bat1530230140[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Bat</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   batImage: TextureRegion [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   destroyed: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   hud: Hud [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   parent: Main [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenTwo: LevelTwoScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   setToDestroy: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   vector: Vector2 [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># defineEnemy()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hitOnHead()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(dt: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+BatSpawner1530230140[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BatSpawner</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   bats: Array&lt;Bat&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   level: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   levelOne: LevelOneScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   levelThree: LevelThreeScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   levelTwo: LevelTwoScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previousTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stateTime: float [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># defineEnemy()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ draw(batch: Batch)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hitOnHead()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ spawnBat()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(dt: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Boss1530230140[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Boss</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   balls: Array&lt;Fireball&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   batImage: TextureRegion [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   beginSecondPhase: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   destroyed: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fireballCount: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   frames: Array&lt;TextureRegion&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   hud: Hud [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   lives: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   parent: Main [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previousTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenThree: LevelThreeScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   secondPhase: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   setToDestroy: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stateTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   vector: Vector2 [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   walkAnimation: Animation [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ abovePlayer()</TD></TR>
+<TR><TD ALIGN="LEFT" ># defineEnemy()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ destroy()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ draw(batch: Batch)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hitOnHead()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ shoot()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(dt: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CompletedScreen738386980[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CompletedScreen</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   parent: Main [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   score: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stage: Stage [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   time: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   viewport: Viewport [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ dispose()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hide()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pause()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ render(v: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resize(width: int, height: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resume()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ show()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Enemy1530230140[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Enemy</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   b2body: Body [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screen: LevelOneScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenThree: LevelThreeScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenTwo: LevelTwoScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   velocity: Vector2 [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   world: World [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># defineEnemy()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hitOnHead()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reverseVelocity(x: boolean, y: boolean)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(dt: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Fireball1530230140[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Fireball</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   destroyed: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   level: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previousTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   right: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenOne: LevelOneScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenThree: LevelThreeScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   screenTwo: LevelTwoScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   setToDestroy: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stateTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   test: TextureRegion [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   vector: Vector2 [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># defineEnemy()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ destroy()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hitOnHead()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(dt: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GameOverScreen738386980[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GameOverScreen</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   level: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parent: Main [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   score: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stage: Stage [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   time: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   viewport: Viewport [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ dispose()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hide()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pause()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ render(v: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resize(width: int, height: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resume()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ show()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Hud1323722353[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Hud</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   countdownLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   levelLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   playerLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   scoreLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   stage: Stage [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timeCount: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timeLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   viewport: Viewport [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   worldLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   worldTimer: Integer [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addScore(value: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dispose()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(dt: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LevelOneScreen738386980[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LevelOneScreen</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   atlas: TextureAtlas [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   b2dr: Box2DDebugRenderer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   creator: B2WorldCreator [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   done: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   gamecam: OrthographicCamera [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   gameport: Viewport [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   hud: Hud [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   map: TiledMap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mapLoader: TmxMapLoader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   music: Music [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parent: Main [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   player: Player [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pref: AppPreferences [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   renderer: OrthogonalTiledMapRenderer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   world: World [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ dispose()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ handleInput(dt: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hide()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pause()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ render(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resize(width: int, height: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resume()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ show()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(dt: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LevelThreeScreen738386980[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LevelThreeScreen</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   atlas: TextureAtlas [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   b2dr: Box2DDebugRenderer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   creator: B2WorldCreator [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   done: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   gamecam: OrthographicCamera [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   gameport: Viewport [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   hud: Hud [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   isComplete: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   map: TiledMap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mapLoader: TmxMapLoader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   music: Music [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parent: Main [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   player: Player [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pref: AppPreferences [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   renderer: OrthogonalTiledMapRenderer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   world: World [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ dispose()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ handleInput(dt: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hide()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pause()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ render(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resize(width: int, height: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resume()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ show()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(dt: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LevelTwoScreen738386980[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LevelTwoScreen</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   atlas: TextureAtlas [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   b2dr: Box2DDebugRenderer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   creator: B2WorldCreator [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   done: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   gamecam: OrthographicCamera [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   gameport: Viewport [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   hud: Hud [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   map: TiledMap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mapLoader: TmxMapLoader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   music: Music [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parent: Main [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   player: Player [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pref: AppPreferences [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   renderer: OrthogonalTiledMapRenderer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   world: World [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ dispose()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ handleInput(dt: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hide()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pause()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ render(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resize(width: int, height: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resume()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ show()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(dt: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LoadingScreen738386980[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LoadingScreen</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   parent: Main [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   spriteBatch: SpriteBatch [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stage: Stage [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ dispose()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hide()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pause()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ render(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resize(width: int, height: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resume()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ show()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Main1879371708[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Main</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   batch: SpriteBatch [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   level: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   levelOneComplete: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   levelOneScreen: LevelOneScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   levelThreeScreen: LevelThreeScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   levelTwoComplete: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   levelTwoScreen: LevelTwoScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   loadingScreen: LoadingScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   menuScreen: MenuScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   preferences: AppPreferences [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   preferencesScreen: OptionsScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   yakuzaScreen: YakuzaScreen [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addDifficulty()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ changeScreen(screen: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ create()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dispose()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ render()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MenuScreen738386980[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MenuScreen</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   newGame: TextButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parent: Main [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   spriteBatch: SpriteBatch [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stage: Stage [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ dispose()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hide()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pause()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ render(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resize(width: int, height: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resume()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ show()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+OptionsScreen738386980[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)OptionsScreen</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   difficultyLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   musicOnOffLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parent: Main [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stage: Stage [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   titleLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   volumeMusicLabel: Label [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ dispose()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hide()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pause()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ render(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resize(width: int, height: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resume()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ show()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Player1530230140[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Player</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   b2body: Body [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   currentState: State [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   isComplete: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   isDead: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   playerJump: Animation [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   playerRun: Animation [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   playerStand: TextureRegion [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   previousState: State [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   runningRight: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stateTimer: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   world: World [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ complete()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ definePlayer()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getFrame(dt: float): TextureRegion</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hit()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(dt: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Shooter1530230140[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Shooter</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   balls: Array&lt;Fireball&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   destroyed: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   frames: Array&lt;TextureRegion&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   hud: Hud [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   level: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   levelOne: LevelOneScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   levelTwo: LevelTwoScreen [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   parent: Main [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previousTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   runningRight: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   setToDestroy: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stateTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   walkAnimation: Animation [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># defineEnemy()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ draw(batch: Batch)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hitOnHead()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ shoot()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(dt: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Walker1530230140[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Walker</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   destroyed: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   frames: Array&lt;TextureRegion&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   hud: Hud [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   level: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   parent: Main [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   setToDestroy: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stateTime: float [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   walkAnimation: Animation [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># defineEnemy()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ draw(batch: Batch)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hitOnHead()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(dt: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+YakuzaScreen738386980[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)YakuzaScreen</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   atlas: TextureAtlas [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   b2dr: Box2DDebugRenderer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   creator: B2WorldCreator [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   done: Boolean [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   gamecam: OrthographicCamera [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   gameport: Viewport [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   hud: Hud [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   map: TiledMap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mapLoader: TmxMapLoader [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   music: Music [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parent: Main [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   player: Player [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pref: AppPreferences [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   renderer: OrthogonalTiledMapRenderer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   world: World [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ dispose()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ handleInput(dt: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hide()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pause()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ render(delta: float)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resize(width: int, height: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resume()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ show()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(dt: float)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+B2WorldCreator736727953 -> BatSpawner1530230140[label="batSpawner
+[0..1]"];
+B2WorldCreator736727953 -> Boss1530230140[label="boss
+[0..1]"];
+B2WorldCreator736727953 -> Shooter1530230140[label="shooter
+[0..1]"];
+B2WorldCreator736727953 -> Walker1530230140[label="walker
+[0..1]"];
+Bat1530230140 -> LevelTwoScreen738386980[label="screenTwo
+[0..1]"];
+Bat1530230140 -> Main1879371708[label="parent
+[0..1]"];
+BatSpawner1530230140 -> Bat1530230140[label="bats
+[0..1]"];
+BatSpawner1530230140 -> LevelOneScreen738386980[label="levelOne
+[0..1]"];
+BatSpawner1530230140 -> LevelThreeScreen738386980[label="levelThree
+[0..1]"];
+BatSpawner1530230140 -> LevelTwoScreen738386980[label="levelTwo
+[0..1]"];
+Boss1530230140 -> Fireball1530230140[label="balls
+[0..1]"];
+Boss1530230140 -> Hud1323722353[label="hud
+[0..1]"];
+Boss1530230140 -> LevelThreeScreen738386980[label="screenThree
+[0..1]"];
+Boss1530230140 -> Main1879371708[label="parent
+[0..1]"];
+CompletedScreen738386980 -> Main1879371708[label="parent
+[0..1]"];
+Enemy1530230140 -> Bat1530230140[arrowhead=none, arrowtail=empty, dir=both];
+Enemy1530230140 -> BatSpawner1530230140[arrowhead=none, arrowtail=empty, dir=both];
+Enemy1530230140 -> Boss1530230140[arrowhead=none, arrowtail=empty, dir=both];
+Enemy1530230140 -> Fireball1530230140[arrowhead=none, arrowtail=empty, dir=both];
+Enemy1530230140 -> LevelOneScreen738386980[label="screen
+[0..1]"];
+Enemy1530230140 -> LevelThreeScreen738386980[label="screenThree
+[0..1]"];
+Enemy1530230140 -> LevelTwoScreen738386980[label="screenTwo
+[0..1]"];
+Enemy1530230140 -> Shooter1530230140[arrowhead=none, arrowtail=empty, dir=both];
+Enemy1530230140 -> Walker1530230140[arrowhead=none, arrowtail=empty, dir=both];
+Fireball1530230140 -> LevelOneScreen738386980[label="screenOne
+[0..1]"];
+Fireball1530230140 -> LevelThreeScreen738386980[label="screenThree
+[0..1]"];
+Fireball1530230140 -> LevelTwoScreen738386980[label="screenTwo
+[0..1]"];
+GameOverScreen738386980 -> Main1879371708[label="parent
+[0..1]"];
+LevelOneScreen738386980 -> Main1879371708[label="parent
+[0..1]"];
+LevelThreeScreen738386980 -> Main1879371708[label="parent
+[0..1]"];
+LevelTwoScreen738386980 -> Main1879371708[label="parent
+[0..1]"];
+LoadingScreen738386980 -> Main1879371708[label="parent
+[0..1]"];
+Main1879371708 -> AppPreferences1879371708[label="preferences
+[0..1]"];
+Main1879371708 -> LevelOneScreen738386980[label="levelOneScreen
+[0..1]"];
+Main1879371708 -> LevelThreeScreen738386980[label="levelThreeScreen
+[0..1]"];
+Main1879371708 -> LevelTwoScreen738386980[label="levelTwoScreen
+[0..1]"];
+Main1879371708 -> LoadingScreen738386980[label="loadingScreen
+[0..1]"];
+Main1879371708 -> MenuScreen738386980[label="menuScreen
+[0..1]"];
+Main1879371708 -> OptionsScreen738386980[label="preferencesScreen
+[0..1]"];
+Main1879371708 -> YakuzaScreen738386980[label="yakuzaScreen
+[0..1]"];
+MenuScreen738386980 -> Main1879371708[label="parent
+[0..1]"];
+OptionsScreen738386980 -> Main1879371708[label="parent
+[0..1]"];
+Shooter1530230140 -> Fireball1530230140[label="balls
+[0..1]"];
+Shooter1530230140 -> LevelOneScreen738386980[label="levelOne
+[0..1]"];
+Shooter1530230140 -> LevelTwoScreen738386980[label="levelTwo
+[0..1]"];
+Shooter1530230140 -> Main1879371708[label="parent
+[0..1]"];
+Walker1530230140 -> Main1879371708[label="parent
+[0..1]"];
+YakuzaScreen738386980 -> AppPreferences1879371708[label="pref
+[0..1]"];
+YakuzaScreen738386980 -> B2WorldCreator736727953[label="creator
+[0..1]"];
+YakuzaScreen738386980 -> Hud1323722353[label="hud
+[0..1]"];
+YakuzaScreen738386980 -> Main1879371708[label="parent
+[0..1]"];
+YakuzaScreen738386980 -> Player1530230140[label="player
+[0..1]"];
+    
+}
+@enduml

@@ -1,0 +1,40 @@
+player_enemies.png
+size: 194, 48
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bat
+  rotate: false
+  xy: 0, 16
+  size: 146, 19
+  orig: 146, 19
+  offset: 0, 0
+  index: -1
+fireball
+  rotate: false
+  xy: 0, 0
+  size: 32, 8
+  orig: 32, 8
+  offset: 0, 0
+  index: -1
+player
+  rotate: false
+  xy: 32, 0
+  size: 97, 16
+  orig: 97, 16
+  offset: 0, 0
+  index: -1
+shooter
+  rotate: false
+  xy: 146, 16
+  size: 48, 32
+  orig: 48, 32
+  offset: 0, 0
+  index: -1
+walker
+  rotate: false
+  xy: 129, 0
+  size: 48, 16
+  orig: 48, 16
+  offset: 0, 0
+  index: -1
