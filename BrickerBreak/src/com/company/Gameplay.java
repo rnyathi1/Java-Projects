@@ -6,8 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
+    ArrayList<Integer> highscores = new ArrayList<Integer>();
+    private int highscore = 0;
     private MapGenerator map;
     private boolean play = false;
     private int score = 0;
@@ -19,7 +26,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int ballPosX = 120;
     private int ballPosY = 350;
     private int ballXDir = -1;
-    private int ballYDir = -2;
+    private int ballYDir = 2;
 
     private int paddlePosX = 320;
 
@@ -54,6 +61,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.setFont(new Font("serif", Font.BOLD,25));
         g.drawString(""+score,590,30);
         if(totalBricks <= 0){
+
             play = false;
             ballXDir = 0;
             ballYDir = 0;
@@ -65,15 +73,22 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             g.drawString("Press Enter to restart:  "  ,230,350);
         }
         if(ballPosY > 570){
+            highScoreChecker(play);
             play = false;
+
             ballXDir = 0;
             ballYDir = 0;
             g.setColor(Color.red);
             g.setFont(new Font("serif", Font.BOLD,30));
-            g.drawString("Gameover:  " + score,190,300);
+            g.drawString("Gameover:  " + score,220,300);
+
+            g.setFont(new Font("serif", Font.BOLD,30));
+            g.drawString("Highscore:  " + highscore,220,350);
 
             g.setFont(new Font("serif", Font.BOLD,20));
-            g.drawString("Press Enter to restart:  "  ,230,350);
+            g.drawString("Press Enter to restart:  "  ,230,400);
+
+
         }
         g.dispose();
 
@@ -183,5 +198,49 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         paddlePosX -= 20;
     }
 
+    public void highScoreChecker(boolean play) {
+        if (play) {
+
+
+            try {
+                File myObj = new File("HighScores.txt");
+
+
+                if (myObj.createNewFile()) {
+                    System.out.println("success");
+                } else {
+                    System.out.println("Already there");
+                }
+
+                Scanner reader = new Scanner(myObj);
+
+                while(reader.hasNextLine()){
+                    highscores.add(Integer.parseInt(reader.nextLine()));
+                }
+
+                reader.close();
+
+                highscores.add(score);
+                FileWriter filewriter = new FileWriter("HighScores.txt",true);
+                filewriter.write(score + "\n" );
+                filewriter.close();
+
+                for( int i : highscores){
+                    if(highscore < i){
+                        highscore = i;
+                    }
+                }
+
+
+
+
+
+
+
+            } catch (IOException e) {
+                System.out.println("gest");
+            }
+        }
+    }
 
 }
