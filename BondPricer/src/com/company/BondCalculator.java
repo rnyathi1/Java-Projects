@@ -9,13 +9,13 @@ public class BondCalculator {
 
     public BondCalculator(double faceV, double couponR, double frq, double yield, double my){
         this.faceV = faceV;
-        this.couponR = couponR;
+        this.couponR = couponR / 100;
         this.frq = frq;
-        this.yield = yield;
+        this.yield = yield / 100;
         this.my = my;
     }
 
-    public double bondPriceCalculator(double faceV, double couponR, double frq, double yield, double my){
+    public double bondPriceCalculator(){
         double bondPrice = 0;
         double C = couponR * (faceV / frq) ;
         double r = yield / frq ;
