@@ -5,20 +5,24 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+
         Scanner scan = new Scanner(System.in);
 
         System.out.println("What is the face value?");
-        int faceValue = scan.nextInt();
+        double faceValue = scan.nextDouble();
         System.out.println("What is the Coupon Rate?");
-        int couponRate = scan.nextInt();
+        double couponRate = scan.nextDouble() / 100;
         System.out.println("What is the amount of payments per year (1/2/4/12) ?");
-        int Frequency = scan.nextInt();
+        double frequency = scan.nextDouble();
         System.out.println("What is the Yield?");
-        int Yield = scan.nextInt();
+        double yield = scan.nextDouble() / 100;
         System.out.println("How many years till maturity?");
-        int maturityYear = scan.nextInt();
+        double maturityYear = scan.nextDouble();
+        BondCalculator calc = new BondCalculator(faceValue,couponRate,frequency,yield,maturityYear);
 
-
+        System.out.println(calc.bondPriceCalculator(faceValue,couponRate,frequency,yield,maturityYear));
 
     }
+
+
 }
