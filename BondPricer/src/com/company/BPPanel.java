@@ -54,15 +54,21 @@ public class BPPanel extends JPanel {
     }
 
     public void submitButtonPressed() {
-        double fv = Double.parseDouble(faceV.getText());
-        double cr = Double.parseDouble(couponR.getText());
-        double fq = Double.parseDouble(frq.getText());
-        double yd = Double.parseDouble(yield.getText());
-        double my = Double.parseDouble(maturityY.getText());
+        try{
+            double fv = Double.parseDouble(faceV.getText());
+            double cr = Double.parseDouble(couponR.getText());
+            double fq = Double.parseDouble(frq.getText());
+            double yd = Double.parseDouble(yield.getText());
+            double my = Double.parseDouble(maturityY.getText());
+            calc = new BondCalculator(fv,cr,fq,yd,my);
+            answer.setText(Double.toString(calc.bondPriceCalculator()));
+            System.out.println(calc.bondPriceCalculator());
+        } catch(Exception e){
+            System.out.println("Please enter a number?");
+        }
 
-        calc = new BondCalculator(fv,cr,fq,yd,my);
-        answer.setText(Double.toString(calc.bondPriceCalculator()));
-        System.out.println(calc.bondPriceCalculator());
+
+
 
     }
 
