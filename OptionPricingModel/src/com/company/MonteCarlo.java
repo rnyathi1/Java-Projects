@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class MonteCarlo extends JPanel {
-    private Label l;
 
     private JPanel top;
     private JPanel centre;
@@ -42,7 +41,7 @@ public class MonteCarlo extends JPanel {
         centre = new JPanel();
 
         top.setLayout(new FlowLayout());
-        centre.setLayout(new GridLayout(8,2));
+        centre.setLayout(new GridLayout(10,2));
         Button button = new Button("Black");
         Button mButton = new Button("Menu");
 
