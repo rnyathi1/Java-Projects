@@ -14,15 +14,15 @@ public class BlackScholes extends JPanel {
         mButton.addActionListener(e -> main.switchToMenu());
         add(button);
         add(mButton);
-        System.out.println("Black: " + BlackScholesCalc(100,105,1,0.05,0.2,0,true));
+
     }
 
-    public double BlackScholesCalc(double stockPrice, double strikePrice, double timeExpiration, double riskFreeRate, double volatility, double dividendYield , boolean call){
+    public double[] BlackScholesCalc(double stockPrice, double strikePrice, double timeExpiration, double riskFreeRate, double volatility, double dividendYield ){
         double d1 = 1/ (volatility * Math.sqrt(timeExpiration)) * (Math.log(stockPrice / strikePrice) + (riskFreeRate - dividendYield + 0.5*(Math.pow(volatility,2))*timeExpiration));
         double d2 = d1 - (volatility * Math.sqrt(timeExpiration));
         double callOption = (stockPrice * Math.exp(-1 * dividendYield * timeExpiration) * CNDF(d1)) - (strikePrice * Math.exp(-1 * riskFreeRate * timeExpiration) * CNDF(d2));
         double putOption = (strikePrice * Math.exp(-1 * riskFreeRate * timeExpiration) * CNDF(-d2)) - (stockPrice * Math.exp(-1 * dividendYield * timeExpiration) * CNDF(-d1));
-        return call ? callOption : putOption;
+        return new double[] {callOption,putOption};
     }
 
     double CNDF(double x)
