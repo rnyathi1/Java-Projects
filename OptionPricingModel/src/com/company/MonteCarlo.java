@@ -64,7 +64,7 @@ public class MonteCarlo extends JPanel {
         timeET = new JTextField();
         riskFT = new JTextField();
         volT = new JTextField();
-        dividendYT = new JTextField();
+        dividendYT = new JTextField(0);
         simT = new JTextField();
 
         submit = new JButton("Calculate");
@@ -85,15 +85,22 @@ public class MonteCarlo extends JPanel {
 
     }
     public void submitButtonPressed(){
-       double sto=  Double.parseDouble(stockPT.getText());
-       double str= Double.parseDouble(strikePT.getText());
-       double t =Double.parseDouble(timeET.getText());
-       double r = Double.parseDouble(riskFT.getText());
-       double v = Double.parseDouble(volT.getText());
-       double dy =Double.parseDouble(dividendYT.getText());
-       int s =Integer.parseInt(simT.getText());
+        try{
+            double sto=  Double.parseDouble(stockPT.getText());
+            double str= Double.parseDouble(strikePT.getText());
+            double t =Double.parseDouble(timeET.getText());
+            double r = Double.parseDouble(riskFT.getText());
+            double v = Double.parseDouble(volT.getText());
+            double dy =Double.parseDouble(dividendYT.getText());
+            int s =Integer.parseInt(simT.getText());
 
-       MonteCarloCalc(sto,str,t,r,v,dy,s);
+            MonteCarloCalc(sto,str,t,r,v,dy,s);
+        }catch (Exception e){
+            answer.setText("Check your inputs");
+        }
+
+
+
     }
     public void MonteCarloCalc(double stockPrice, double strikePrice, double timeExpiration, double riskFreeRate, double volatility,double dividendYield ,int simulations ) {
         Random r = new Random();

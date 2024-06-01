@@ -81,15 +81,20 @@ public class BlackScholes extends JPanel {
 
     }
     public void submitButtonPressed(){
-        double sto=  Double.parseDouble(stockPT.getText());
-        double str= Double.parseDouble(strikePT.getText());
-        double t =Double.parseDouble(timeET.getText());
-        double r = Double.parseDouble(riskFT.getText());
-        double v = Double.parseDouble(volT.getText());
-        double dy =Double.parseDouble(dividendYT.getText());
+        try{
+            double sto=  Double.parseDouble(stockPT.getText());
+            double str= Double.parseDouble(strikePT.getText());
+            double t =Double.parseDouble(timeET.getText());
+            double r = Double.parseDouble(riskFT.getText());
+            double v = Double.parseDouble(volT.getText());
+            double dy =Double.parseDouble(dividendYT.getText());
 
 
-        BlackScholesCalc(sto,str,t,r,v,dy);
+            BlackScholesCalc(sto,str,t,r,v,dy);
+
+        }catch(Exception e){
+            answer.setText("Check your inputs");
+        }
     }
 
     public void BlackScholesCalc(double stockPrice, double strikePrice, double timeExpiration, double riskFreeRate, double volatility, double dividendYield ){
